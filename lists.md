@@ -63,9 +63,9 @@ The first three items: ['alanine', 'leucine', 'cysteine']
 Use an index value along with your list variable to replace a value from the list.
 
 ```python
-print(f'List was: {metadata}')
-metadata[0] = 'methionine'
-print(f'List is now: {metadata}')
+print(f'List was: {amino_acids}')
+amino_acids[0] = 'methionine'
+print(f'List is now: {amino_acids}')
 ```
 
 ```output
