@@ -174,7 +174,7 @@ Mounted at /content/drive
 To save ourselves a lot of typing, let's save the location of our downloaded files to a variable.
 
 ```python
-file_location = "drive/MyDrive/lc-python"
+file_location = "drive/MyDrive/lc-python/"
 ```
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
@@ -221,7 +221,9 @@ Archive:  data.zip
   inflating: data/2015_circ.csv      
   inflating: data/2014_circ.csv      
 ```
-
+```python
+file_location = ""
+```
 Note that the commands `wget` and `unzip` are shell commands, not Python. To run shell commands in Colab, preface the command with an exclaimation point and Colab will automagically know what to do.
 
 If you have files you'd download from the internet, you can move them directly to work with in Colab with `wget`. They won't be in your Google Drive (they were copied onto the machine in the cloud running Colab, if you disconnect from Colab, the files will not persist.) 
@@ -230,7 +232,7 @@ If you have files you'd download from the internet, you can move them directly t
 Let's load our CSV file into a pandas DataFrame, and save it to a new variable called `df`. We can make a string representing the location of that one specific file within our `lc-python` directory, and then pass that filename to `pd.read_csv()`.
 
 ```python
-data_filename = f'{file_location}/data/2011_circ.csv'
+data_filename = f'{file_location}data/2011_circ.csv'
 df = pd.read_csv(data_filename)
 print(df)
 ```
