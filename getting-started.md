@@ -44,7 +44,8 @@ If you're fully set up (ie created your colab account, downloaded the workshop d
   ![](fig/permit_access.png){alt='Click "Connect to Google Drive"'}  
 
 1. Authorize access for the google account you're using for this workshop. There will be several prompts to grant access.
-  ![](fig/authorize_access.png){alt='Authorize access to your google account'}  
+  ![](fig/authorize_access.png){alt='Authorize access to your google account'} 
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
 1. Once access has been granted, go back to the access test notebook, click the ▶️ symbol on the left hand side of the first code cell.
 You've successfully loaded data if you see a dataframe appear beneath the code cell
   ![](fig/success.png){alt='the ▶️ symbol'}
