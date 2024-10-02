@@ -21,7 +21,7 @@ exercises: 10
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
-## Setup instructions if not continuing from Episode 5
+## Setup instructions this session does not include Episode 5
 
 You'll need to load the library `pandas` and make your google drive accessible:
 ```python
@@ -30,6 +30,7 @@ from google.colab import drive
 drive.mount('/content/drive')
 file_location = "drive/MyDrive/lc-python/"
 ```
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Use a `for` loop to process files given a list of their names.

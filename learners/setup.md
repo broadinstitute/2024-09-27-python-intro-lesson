@@ -33,6 +33,7 @@ You should see a `lc-python` folder in "My Drive", with a subfolder called `data
 
 1. Authorize access for the google account you're using for this workshop. There will be several prompts to grant access.
 ![](fig/authorize_access.png){alt='Authorize access to your google account'}
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
 1. Once access has been granted, go back to the access test notebook, click the ▶️ symbol on the left hand side of the first code cell.
 
 ![](fig/success.png){alt='the ▶️ symbol'}

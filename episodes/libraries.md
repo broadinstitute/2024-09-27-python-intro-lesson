@@ -298,7 +298,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'data/2011_circ.csv'
 Also, as seen above, the output when you print a dataframe in Jupyter isn't very easy to read. We can use `.head()` to look at just the first few rows in our dataframe formatted in a more convenient way for our Notebook.
 
 ```python
-df_2011 = pd.read_csv(data_filename)
+df_2011 = pd.read_csv(data_filenamemux)
 df_2011.head()
 ```
 |     | branch         | address                 | city    | zip code | january | february | march | april | may   | june  | july  | august | september | october | november | december | ytd    |

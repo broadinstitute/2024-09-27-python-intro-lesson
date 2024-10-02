@@ -18,13 +18,27 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Setup instructions this session does not include Episode 7
+
+You'll need to load the library `pandas` and make your google drive accessible:
+```python
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+file_location = "drive/MyDrive/lc-python/"
+```
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 For this module, we will use the tidy (long) version of our circulation data, where each variable forms a column, each observation forms a row, and each type of observation unit forms a row. If your workshop included the Tidy Data episode, you should be set and have an object called `df_long` in your Jupyter environment. If not, we’ll read that dataset in now, as it was provided for this lesson.
 
 
 ``` python
 #import if it is already not
 import pandas as pd
-df_long = pd.read_pickle('data/df_long.pkl')
+df_long = pd.read_pickle(file_location + 'data/df_long.pkl')
 ```
 
 Let’s look at the data:
