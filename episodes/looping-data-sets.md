@@ -18,13 +18,27 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Setup instructions if not continuing from Episode 5
+
+You'll need to load the library `pandas` and make your google drive accessible:
+```python
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+file_location = "drive/MyDrive/lc-python/"
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Use a `for` loop to process files given a list of their names.
 
 If you recall from episode 06, the `pd.read_csv()` method takes a text string referencing a filename as an argument. If we have a list of strings that point to our filenames, we can loop through the list to read in each CSV file as a DataFrame. Let's print out the maximum values from the 'ytd' (year to date) column for each DataFrame.
 
 ```python
 for filename in ['data/2011_circ.csv', 'data/2012_circ.csv']:
-  data = pd.read_csv(filename)
+  data = pd.read_csv(file_location + filename)
   print(filename, data['ytd'].max())
 ```
 
@@ -46,11 +60,11 @@ Let's create a list of the usage data CSV files. Because the `.glob()` argument 
 
 ```python
 import glob
-print(f"all csv files in data directory: {glob.glob('data/*.csv')}")
+print(f"all csv files in data directory: {glob.glob(file_location + 'data/*.csv')}")
 ```
 
 ```output
-all csv files in data directory: ['data/2011_circ.csv', 'data/2016_circ.csv', 'data/2017_circ.csv', 'data/2022_circ.csv', 'data/2018_circ.csv', 'data/2019_circ.csv', 'data/2012_circ.csv', 'data/2013_circ.csv', 'data/2021_circ.csv', 'data/2020_circ.csv', 'data/2015_circ.csv', 'data/2014_circ.csv']
+all csv files in data directory: ['drive/MyDrive/lc-python/data/2017_circ.csv', 'drive/MyDrive/lc-python/data/2016_circ.csv', 'drive/MyDrive/lc-python/data/2011_circ.csv', 'drive/MyDrive/lc-python/data/2022_circ.csv', 'drive/MyDrive/lc-python/data/2018_circ.csv', 'drive/MyDrive/lc-python/data/2012_circ.csv', 'drive/MyDrive/lc-python/data/2019_circ.csv', 'drive/MyDrive/lc-python/data/2013_circ.csv', 'drive/MyDrive/lc-python/data/2020_circ.csv', 'drive/MyDrive/lc-python/data/2021_circ.csv', 'drive/MyDrive/lc-python/data/2015_circ.csv', 'drive/MyDrive/lc-python/data/2014_circ.csv']
 ```
 
 ## Use `glob` and `for` to process batches of files.
@@ -58,47 +72,47 @@ all csv files in data directory: ['data/2011_circ.csv', 'data/2016_circ.csv', 'd
 Now we can use glob in a `for` loop to create DataFrames from all of the CSV files in the `data` directory. To use tools like `glob` it helps if files are named and stored consistently so that simple patterns will find the right data. You can learn more about how to name files to improve machine-readability from the [Open Science Foundation article on file naming](https://help.osf.io/article/146-file-naming).
 
 ```python
-for csv in glob.glob('data/*.csv'):
+for csv in glob.glob(file_location + 'data/*.csv'):
   data = pd.read_csv(csv)
   print(csv, data['ytd'].max())
 ```
 
 ```output
-data/2011_circ.csv 966720
-data/2016_circ.csv 670077
-data/2017_circ.csv 634570
-data/2022_circ.csv 301340
-data/2018_circ.csv 614313
-data/2019_circ.csv 581151
-data/2012_circ.csv 937649
-data/2013_circ.csv 821749
-data/2021_circ.csv 271811
-data/2020_circ.csv 276878
-data/2015_circ.csv 694528
-data/2014_circ.csv 755189
+drive/MyDrive/lc-python/data/2017_circ.csv 634570
+drive/MyDrive/lc-python/data/2016_circ.csv 670077
+drive/MyDrive/lc-python/data/2011_circ.csv 966720
+drive/MyDrive/lc-python/data/2022_circ.csv 301340
+drive/MyDrive/lc-python/data/2018_circ.csv 614313
+drive/MyDrive/lc-python/data/2012_circ.csv 937649
+drive/MyDrive/lc-python/data/2019_circ.csv 581151
+drive/MyDrive/lc-python/data/2013_circ.csv 821749
+drive/MyDrive/lc-python/data/2020_circ.csv 276878
+drive/MyDrive/lc-python/data/2021_circ.csv 271811
+drive/MyDrive/lc-python/data/2015_circ.csv 694528
+drive/MyDrive/lc-python/data/2014_circ.csv 755189
 ```
 
 The output of the files above may be different for you, depending on what operating system you use. The glob library doesn't have its own internal system for determining how filenames are sorted, but instead relies on the operating system's filesystem. Since operating systems can differ, it is helpful to use Python to manually sort the glob files so that everyone will see the same results, regardless of their operating system. You can do that by applying the Python method `sorted()` to the `glob.glob` list.
 
 ```python
-for csv in sorted(glob.glob('data/*.csv')):
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
     data = pd.read_csv(csv)
     print(csv, data['ytd'].max())
 ```
 
 ```output
-data/2011_circ.csv 966720
-data/2012_circ.csv 937649
-data/2013_circ.csv 821749
-data/2014_circ.csv 755189
-data/2015_circ.csv 694528
-data/2016_circ.csv 670077
-data/2017_circ.csv 634570
-data/2018_circ.csv 614313
-data/2019_circ.csv 581151
-data/2020_circ.csv 276878
-data/2021_circ.csv 271811
-data/2022_circ.csv 301340
+drive/MyDrive/lc-python/data/2011_circ.csv 966720
+drive/MyDrive/lc-python/data/2012_circ.csv 937649
+drive/MyDrive/lc-python/data/2013_circ.csv 821749
+drive/MyDrive/lc-python/data/2014_circ.csv 755189
+drive/MyDrive/lc-python/data/2015_circ.csv 694528
+drive/MyDrive/lc-python/data/2016_circ.csv 670077
+drive/MyDrive/lc-python/data/2017_circ.csv 634570
+drive/MyDrive/lc-python/data/2018_circ.csv 614313
+drive/MyDrive/lc-python/data/2019_circ.csv 581151
+drive/MyDrive/lc-python/data/2020_circ.csv 276878
+drive/MyDrive/lc-python/data/2021_circ.csv 271811
+drive/MyDrive/lc-python/data/2022_circ.csv 301340
 ```
 
 
@@ -110,24 +124,26 @@ In the example above, we can print out results from each DataFrame as we cycle t
 Before we join the data from each CSV into a single DataFrame, we'll want to make sure we keep track of which year each dataset comes from. To do that we can capture the year from each file name and save it to a new column for all of the rows in each CSV. Let's see how this works by looping through each of our CSVs.
 
 ```python
-for csv in sorted(glob.glob('data/*.csv')):
-        year = csv[5:9] #the 5th to 9th characters in each file match the year
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+        year = csv[29:33] #the 30th to 33rd characters in each file match the year
+        # if you copied your data using wget, year should be set differently:
+        # year = csv[5:9] #the 5th to 9th characters in each file match the year
         print(f'filename: {csv} year: {year}')
 ```
 
 ```output
-filename: data/2011_circ.csv year: 2011
-filename: data/2012_circ.csv year: 2012
-filename: data/2013_circ.csv year: 2013
-filename: data/2014_circ.csv year: 2014
-filename: data/2015_circ.csv year: 2015
-filename: data/2016_circ.csv year: 2016
-filename: data/2017_circ.csv year: 2017
-filename: data/2018_circ.csv year: 2018
-filename: data/2019_circ.csv year: 2019
-filename: data/2020_circ.csv year: 2020
-filename: data/2021_circ.csv year: 2021
-filename: data/2022_circ.csv year: 2022
+filename: drive/MyDrive/lc-python/data/2011_circ.csv year: 2011
+filename: drive/MyDrive/lc-python/data/2012_circ.csv year: 2012
+filename: drive/MyDrive/lc-python/data/2013_circ.csv year: 2013
+filename: drive/MyDrive/lc-python/data/2014_circ.csv year: 2014
+filename: drive/MyDrive/lc-python/data/2015_circ.csv year: 2015
+filename: drive/MyDrive/lc-python/data/2016_circ.csv year: 2016
+filename: drive/MyDrive/lc-python/data/2017_circ.csv year: 2017
+filename: drive/MyDrive/lc-python/data/2018_circ.csv year: 2018
+filename: drive/MyDrive/lc-python/data/2019_circ.csv year: 2019
+filename: drive/MyDrive/lc-python/data/2020_circ.csv year: 2020
+filename: drive/MyDrive/lc-python/data/2021_circ.csv year: 2021
+filename: drive/MyDrive/lc-python/data/2022_circ.csv year: 2022
 ```
 
 Once we've saved the `year` variable from each file name, we can assign it to every row in a column for each CSV by assigning `data['year'] = year` inside of the loop. 
@@ -150,18 +166,18 @@ print(f'Number of saved DataFrames: {len(dfs)}')
 ```
 
 ```output
-1 Saving 80 rows from data/2011_circ.csv
-2 Saving 79 rows from data/2012_circ.csv
-3 Saving 80 rows from data/2013_circ.csv
-4 Saving 80 rows from data/2014_circ.csv
-5 Saving 80 rows from data/2015_circ.csv
-6 Saving 80 rows from data/2016_circ.csv
-7 Saving 80 rows from data/2017_circ.csv
-8 Saving 80 rows from data/2018_circ.csv
-9 Saving 81 rows from data/2019_circ.csv
-10 Saving 81 rows from data/2020_circ.csv
-11 Saving 81 rows from data/2021_circ.csv
-12 Saving 81 rows from data/2022_circ.csv
+1 Saving 80 rows from drive/MyDrive/lc-python/data/2011_circ.csv
+2 Saving 79 rows from drive/MyDrive/lc-python/data/2012_circ.csv
+3 Saving 80 rows from drive/MyDrive/lc-python/data/2013_circ.csv
+4 Saving 80 rows from drive/MyDrive/lc-python/data/2014_circ.csv
+5 Saving 80 rows from drive/MyDrive/lc-python/data/2015_circ.csv
+6 Saving 80 rows from drive/MyDrive/lc-python/data/2016_circ.csv
+7 Saving 80 rows from drive/MyDrive/lc-python/data/2017_circ.csv
+8 Saving 80 rows from drive/MyDrive/lc-python/data/2018_circ.csv
+9 Saving 81 rows from drive/MyDrive/lc-python/data/2019_circ.csv
+10 Saving 81 rows from drive/MyDrive/lc-python/data/2020_circ.csv
+11 Saving 81 rows from drive/MyDrive/lc-python/data/2021_circ.csv
+12 Saving 81 rows from drive/MyDrive/lc-python/data/2022_circ.csv
 Number of saved DataFrames: 12
 ```
 
