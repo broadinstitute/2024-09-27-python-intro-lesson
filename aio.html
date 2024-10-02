@@ -456,7 +456,7 @@
         
 <section id="aio-getting-started"><p>Content from <a href="getting-started.html">Getting Started</a></p>
 <hr>
-<p>Last updated on 2024-09-26 |
+<p>Last updated on 2024-10-02 |
 
         <a href="https://github.com/broadinstitute/2024-09-27-python-intro-lesson/edit/main/episodes/getting-started.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -523,7 +523,9 @@ free to browse today’s lesson content. <a href="https:/broad.io/cb-python-2024
 <ol start="3" style="list-style-type: decimal">
 <li><p>If you see this dialog box, click “Connect to Google Drive” <img src="fig/permit_access.png" alt='Click "Connect to Google Drive"' class="figure"></p></li>
 <li><p>Authorize access for the google account you’re using for this
-workshop. There will be several prompts to grant access. <img src="fig/authorize_access.png" alt="Authorize access to your google account" class="figure"><br></p></li>
+workshop. There will be several prompts to grant access. <img src="fig/authorize_access.png" alt="Authorize access to your google account" class="figure"> You’ll need to grant
+Google all the permissions it requests to make your google drive
+accessible to Colab.</p></li>
 <li><p>Once access has been granted, go back to the access test
 notebook, click the ▶️ symbol on the left hand side of the first code
 cell. You’ve successfully loaded data if you see a dataframe appear
@@ -2291,7 +2293,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-libraries"><p>Content from <a href="libraries.html">Libraries &amp; Pandas</a></p>
 <hr>
-<p>Last updated on 2024-09-27 |
+<p>Last updated on 2024-10-02 |
 
         <a href="https://github.com/broadinstitute/2024-09-27-python-intro-lesson/edit/main/episodes/libraries.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2573,7 +2575,7 @@ downloaded files to a variable.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> What if the files have not been copied to my Google Drive yet? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>We wanted you to know how to make files you have on your computer
 accessible for use in Colab and persist over time. To save time now, run
@@ -2728,7 +2730,7 @@ for our Notebook.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df_2011 <span class="op">=</span> pd.read_csv(data_filename)</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df_2011 <span class="op">=</span> pd.read_csv(data_filenamemux)</span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>df_2011.head()</span></code></pre>
 </div>
 <table class="table">
@@ -3158,7 +3160,7 @@ course of the year.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3190,7 +3192,7 @@ conventions.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Locating the Right Module </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>Given the variables <code>year</code>, <code>month</code> and
 <code>day</code>, how would you generate a date in the standard iso
@@ -3213,7 +3215,7 @@ library</a> module could help you?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The <a href="https://docs.python.org/3/library/datetime.html" class="external-link">datetime
 module</a> seems like it could help you.</p>
@@ -3248,7 +3250,7 @@ convert your date:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
   <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Is there something special about that date in library history? </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>According to <a href="https://www.wccls.org/news/brief-history-library-catalog" class="external-link">Washington
 County Cooperative Library Services</a>: “1971, August 26 – Ohio
@@ -3574,7 +3576,7 @@ each item in the list along with the vegetable name.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3618,7 +3620,7 @@ each item in the list along with the vegetable name.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Use range() in a loop </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Print out the numbers 10, 11, 12, 13, 14, 15, using range() in a
 <code>for</code> loop.</p>
@@ -3627,7 +3629,7 @@ each item in the list along with the vegetable name.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3676,7 +3678,7 @@ value of ‘library’ to <code>lib</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3702,7 +3704,7 @@ value of ‘library’ to <code>lib</code>.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Subtract a list of values in a loop </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Create an accumulator variable called <code>total</code> that starts
@@ -3723,7 +3725,7 @@ track of its value throughout.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3819,9 +3821,9 @@ a list.</li>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions if not continuing from Episode 5 </h3>
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions this session does not include Episode 5 </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>You’ll need to load the library <code>pandas</code> and make your
 google drive accessible:</p>
@@ -3833,6 +3835,8 @@ google drive accessible:</p>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">"drive/MyDrive/lc-python/"</span></span></code></pre>
 </div>
+<p>You’ll need to grant Google all the permissions it requests to make
+your google drive accessible to Colab.</p>
 </div>
 </div>
 </div>
@@ -4105,7 +4109,7 @@ True.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Only item 1 is matched by the wildcard expression
 <code>data/*circ.csv</code>.</p>
@@ -4139,7 +4143,7 @@ True.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4159,7 +4163,7 @@ True.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Compile CSVs into one DataFrame </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>Imagine you had a folder named <code>outputs/</code> that included
 all kinds of different file types. Use <code>glob</code> and a
@@ -4176,7 +4180,7 @@ the same columns so they will concatenate together cleanly using
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4944,7 +4948,7 @@ with several arguments and print out the results.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4968,7 +4972,7 @@ with several arguments and print out the results.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Conditional statements within functions </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Create a function called <code>grade_converter</code> that takes a
 numerical score (0 - 100) as its parameter and returns a letter grade
@@ -4987,7 +4991,7 @@ it out.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5026,7 +5030,7 @@ it out.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Local and global variables </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>List all of the global variables and all of the local variables in
 the following code.</p>
@@ -5055,7 +5059,7 @@ the following code.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Global variables:</p>
 <ul>
@@ -5080,7 +5084,7 @@ the following code.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
   <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: CSVs to Pandas function </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <p>In the <a href="looping-data-sets.html#appending-dataframes-to-a-list">Looping
 Data Sets episode</a>, we learned to use glob to loop through a
@@ -5098,7 +5102,7 @@ DataFrame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5153,7 +5157,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-data-visualisation"><p>Content from <a href="data-visualisation.html">Data Visualisation</a></p>
 <hr>
-<p>Last updated on 2024-09-24 |
+<p>Last updated on 2024-10-02 |
 
         <a href="https://github.com/broadinstitute/2024-09-27-python-intro-lesson/edit/main/episodes/data-visualisation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -5191,24 +5195,47 @@ outliers in library circulation data.</li>
 </div>
 </div>
 </div>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions this session does not include Episode 7 </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div class="accordion-body">
+<p>You’ll need to load the library <code>pandas</code> and make your
+google drive accessible:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">"drive/MyDrive/lc-python/"</span></span></code></pre>
+</div>
+<p>You’ll need to grant Google all the permissions it requests to make
+your google drive accessible to Colab.</p>
+</div>
+</div>
+</div>
+</div>
 <p>For this module, we will use the tidy (long) version of our
 circulation data, where each variable forms a column, each observation
 forms a row, and each type of observation unit forms a row. If your
 workshop included the Tidy Data episode, you should be set and have an
 object called <code>df_long</code> in your Jupyter environment. If not,
 we’ll read that dataset in now, as it was provided for this lesson.</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#import if it is already not</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span></code></pre>
-</div>
-<p>Let’s look at the data:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>df_long.head()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co">#import if it is already not</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(file_location <span class="op">+</span> <span class="st">'data/df_long.pkl'</span>)</span></code></pre>
+</div>
+<p>Let’s look at the data:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>df_long.head()</span></code></pre>
 </div>
 <table class="table">
 <colgroup>
@@ -5309,15 +5336,15 @@ we’ll read that dataset in now, as it was provided for this lesson.</p>
 data, we can plot the circulation data over time.</p>
 <p>At first, let’s focus on a specific branch. We can select the rows
 for the Albany Park branch:</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>albany <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Albany Park'</span>]</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>albany.head()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>albany <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Albany Park'</span>]</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>albany.head()</span></code></pre>
 </div>
 <table class="table">
 <colgroup>
@@ -5413,19 +5440,19 @@ for the Albany Park branch:</p>
 </table>
 <p>Now we can use the <code>plot()</code> function that is built in to
 pandas. Let’s try it:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>albany.plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>albany.plot()</span></code></pre>
 </div>
 <figure><img src="fig/albany-plot-1.png" alt="Line plot of zip code, ytd, year, and circulation numbers over time from the albany DataFrame" class="figure mx-auto d-block"></figure><p>That’s interesting, but by default <code>.plot()</code> will use a
 line plot for all numeric variables of the DataFrame. This isn’t exactly
 what we want, so let’s tell <code>.plot()</code> what variable to use by
 selecting the <code>circulation</code> column.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot()</span></code></pre>
 </div>
 <figure><img src="fig/albany-circ-3.png" alt="Line plot of the Albany Park branch circulation showing a big drop from 2013 to 2014." class="figure mx-auto d-block"></figure><div id="analyze-the-circulation-trends" class="callout challenge">
 <div class="callout-square">
@@ -5447,7 +5474,7 @@ or notable changes in the data.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The significant drop in circulation in March 2020 is likely due to
 the COVID-19 pandemic, which caused widespread temporary closures of
@@ -5478,14 +5505,14 @@ line.</li>
 <li>Additionally, we can directly set the x and y axis labels within the
 <code>.plot()</code> function.</li>
 </ul>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(title<span class="op">=</span><span class="st">'Circulation Count Over Time'</span>, </span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>                                figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), </span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>                                color<span class="op">=</span><span class="st">'blue'</span>, </span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>                                xlabel<span class="op">=</span><span class="st">'Date'</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>                                ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(title<span class="op">=</span><span class="st">'Circulation Count Over Time'</span>, </span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>                                figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), </span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>                                color<span class="op">=</span><span class="st">'blue'</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                                xlabel<span class="op">=</span><span class="st">'Date'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>                                ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
 </div>
 <figure><img src="fig/albany-circ-labeling-5.png" alt="Line plot of the Albany Park branch circulation with matplotlib styles applied." class="figure mx-auto d-block"></figure><div class="section level3">
 <h3 id="changing-plot-types">Changing plot types<a class="anchor" aria-label="anchor" href="#changing-plot-types"></a>
@@ -5493,21 +5520,21 @@ line.</li>
 <p>What if we want to use a different plot type for this graphic? To do
 so, we can change the <code>kind</code> parameters in our
 <code>.plot()</code> function.</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(kind<span class="op">=</span><span class="st">'area'</span>, </span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>                            title<span class="op">=</span><span class="st">'Circulation Count Area Plot at Albany Park'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>                            xlabel<span class="op">=</span><span class="st">'Date'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                            ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
-</div>
-<figure><img src="fig/albany-circ-area-7.png" alt="Area plot of the Albany Park branch circulation." class="figure mx-auto d-block"></figure><p>We can also look at our circulation data as a histogram.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">20</span>, </span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>                            title<span class="op">=</span><span class="st">'Distribution of Circulation Counts at Albany Park'</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>                            xlabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(kind<span class="op">=</span><span class="st">'area'</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>                            title<span class="op">=</span><span class="st">'Circulation Count Area Plot at Albany Park'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>                            xlabel<span class="op">=</span><span class="st">'Date'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>                            ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
+</div>
+<figure><img src="fig/albany-circ-area-7.png" alt="Area plot of the Albany Park branch circulation." class="figure mx-auto d-block"></figure><p>We can also look at our circulation data as a histogram.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>albany[<span class="st">'circulation'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">20</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>                            title<span class="op">=</span><span class="st">'Distribution of Circulation Counts at Albany Park'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>                            xlabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
 </div>
 <figure><img src="fig/albany-circ-hist-9.png" alt="histogram of the Albany branch circulation." class="figure mx-auto d-block"></figure>
 </div>
@@ -5517,12 +5544,12 @@ so, we can change the <code>kind</code> parameters in our
 <p>Let’s switch back to the full DataFrame in <code>df_long</code> and
 use another plotting package in Python called Plotly. First let’s
 install and then use the package.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># uncomment below to install plotly if the import fails. </span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># !pip install plotly</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># uncomment below to install plotly if the import fails. </span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># !pip install plotly</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span></code></pre>
 </div>
 <p>Now we can visualize how circulation counts have changed over time
 for selected branches. This can be especially useful for identifying
@@ -5531,22 +5558,22 @@ our data to look at branches starting with the letter ‘A’. Feel free to
 select different branches. After subsetting, we will sort our new
 DataFrame by date and then plot our data by date and circulation
 count.</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Creating a line plot for a few selected branches to avoid clutter</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>selected_branches <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>].isin([<span class="st">'Altgeld'</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a> <span class="st">'Archer Heights'</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a> <span class="st">'Austin'</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a> <span class="st">'Austin-Irving'</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a> <span class="st">'Avalon'</span>])]</span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>selected_branches <span class="op">=</span> selected_branches.sort_values(by<span class="op">=</span><span class="st">'date'</span>)</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>fig <span class="op">=</span> px.line(selected_branches, x<span class="op">=</span>selected_branches.index, y<span class="op">=</span><span class="st">'circulation'</span>, color<span class="op">=</span><span class="st">'branch'</span>, title<span class="op">=</span><span class="st">'Circulation Over Time for Selected Branches'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>fig.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Creating a line plot for a few selected branches to avoid clutter</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>selected_branches <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>].isin([<span class="st">'Altgeld'</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a> <span class="st">'Archer Heights'</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a> <span class="st">'Austin'</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a> <span class="st">'Austin-Irving'</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a> <span class="st">'Avalon'</span>])]</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>selected_branches <span class="op">=</span> selected_branches.sort_values(by<span class="op">=</span><span class="st">'date'</span>)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>fig <span class="op">=</span> px.line(selected_branches, x<span class="op">=</span>selected_branches.index, y<span class="op">=</span><span class="st">'circulation'</span>, color<span class="op">=</span><span class="st">'branch'</span>, title<span class="op">=</span><span class="st">'Circulation Over Time for Selected Branches'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>fig.show()</span></code></pre>
 </div>
 <p>Here is a view of the <a href="line_plot_int.html">interactive output
 of the Plotly line chart</a>.</p>
@@ -5561,15 +5588,15 @@ branches over time.</p>
 among branches. We first need to group our data by branch and sum up the
 circulation counts. Then we can use the bar plot to show the
 distribution of total circulation over branches.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Aggregate circulation by branch</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>fig <span class="op">=</span> px.bar(total_circulation_by_branch, x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>fig.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Aggregate circulation by branch</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>fig <span class="op">=</span> px.bar(total_circulation_by_branch, x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>fig.show()</span></code></pre>
 </div>
 <p>Here is a view of the <a href="bar_plot_int.html">interactive output
 of the Plotly bar chart</a>.</p>
@@ -5595,15 +5622,15 @@ over time.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>chinatown <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Chinatown'</span>]</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>chinatown[<span class="st">'circulation'</span>].plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>chinatown <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Chinatown'</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>chinatown[<span class="st">'circulation'</span>].plot()</span></code></pre>
 </div>
 <figure><img src="fig/chinatown_circulation.png" alt="image showing the circulation of the Chinatown branch over ten years" class="figure mx-auto d-block"><div class="figcaption">Chinatown plot</div>
 </figure>
@@ -5611,12 +5638,12 @@ over time.</li>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Modify a plot display </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Modify a plot display </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>Add a line to the code below to plot the Uptown branch circulation
 including the following plot elements:</p>
@@ -5625,27 +5652,27 @@ including the following plot elements:</p>
 <li>“Year” and “Circulation Count” labels for the x and y axes</li>
 <li>A green plot line</li>
 </ul>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>uptown <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Uptown'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>uptown <span class="op">=</span> df_long[df_long[<span class="st">'branch'</span>] <span class="op">==</span> <span class="st">'Uptown'</span>]</span></code></pre>
 </div>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>uptown[<span class="st">'circulation'</span>].plot(title<span class="op">=</span><span class="st">'Uptown Circulation'</span>, </span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>                                color<span class="op">=</span><span class="st">'green'</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>                                xlabel<span class="op">=</span><span class="st">'Year'</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>                                ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>uptown[<span class="st">'circulation'</span>].plot(title<span class="op">=</span><span class="st">'Uptown Circulation'</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>                                color<span class="op">=</span><span class="st">'green'</span>, </span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>                                xlabel<span class="op">=</span><span class="st">'Year'</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>                                ylabel<span class="op">=</span><span class="st">'Circulation Count'</span>)</span></code></pre>
 </div>
 <figure><img src="fig/uptown_plot.png" alt="image showing the circulation of the Uptown branch with labels" class="figure mx-auto d-block"><div class="figcaption">Uptown plot</div>
 </figure>
@@ -5666,19 +5693,19 @@ including the following plot elements:</p>
 <div class="callout-content">
 <p>Modify the code below to only plot the five Chicago Public Library
 branches with the highest circulation.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>top_five <span class="op">=</span> total_circulation_by_branch.___________________</span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>fig <span class="op">=</span> px.bar(top_five._______, x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">600</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>fig.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>top_five <span class="op">=</span> total_circulation_by_branch.___________________</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>fig <span class="op">=</span> px.bar(top_five._______, x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">600</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>fig.show()</span></code></pre>
 </div>
 </div>
 </div>
@@ -5688,20 +5715,20 @@ branches with the highest circulation.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>total_circulation_by_branch.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>top_five <span class="op">=</span> total_circulation_by_branch.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>fig <span class="op">=</span> px.bar(top_five.head(), x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">600</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>fig.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>total_circulation_by_branch.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>df_long <span class="op">=</span> pd.read_pickle(<span class="st">'data/df_long.pkl'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>total_circulation_by_branch <span class="op">=</span> df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>top_five <span class="op">=</span> total_circulation_by_branch.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>fig <span class="op">=</span> px.bar(top_five.head(), x<span class="op">=</span><span class="st">'branch'</span>, y<span class="op">=</span><span class="st">'circulation'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">600</span>, title<span class="op">=</span><span class="st">'Total Circulation by Branch'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>fig.show()</span></code></pre>
 </div>
 <figure><img src="fig/top_five_circ.png" alt="a bar plot of the top five branch circulation figures" class="figure mx-auto d-block"><div class="figcaption">Top five circulation branches</div>
 </figure>
