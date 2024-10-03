@@ -21,7 +21,7 @@ exercises: 10
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
-## Setup instructions this session does not include Episode 5
+## Setup instructions if your Google Drive is not mounted
 
 You'll need to load the library `pandas` and make your google drive accessible:
 ```python
@@ -31,6 +31,21 @@ drive.mount('/content/drive')
 file_location = "drive/MyDrive/lc-python/"
 ```
 You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### What if the files have not been copied to my Google Drive yet?
+
+We wanted you to know how to make files you have on your computer accessible for use in Colab and persist over time. To save time now, run `wget` to download files directly to the cloud:
+
+```bash
+!wget https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip
+!unzip data.zip
+```
+```python
+file_location = ""
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Use a `for` loop to process files given a list of their names.
