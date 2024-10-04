@@ -16,15 +16,73 @@ exercises: 10
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Tidy Data in Pandas 
 
-Let's import the pickle file that contains all of our Chicago public library circulation data in a single DataFrame. We can use the Pandas `.read_pickle()` method to do so.
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Setup instructions if your Google Drive is not mounted
+If you did not run the commands from episode 7 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
+```python
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+file_location = "drive/MyDrive/lc-python/"
+```
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### What if the files have not been copied to my Google Drive yet?
+
+Uploading files to Google Drive allows the data persist over time when using Colab. To save time now, run `wget` to download files directly to the cloud:
+
+```bash
+!wget https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip
+!unzip data.zip
+```
+```python
+file_location = ""
+```
+Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Put all of our Chicago public library circulation data in a single DataFrame.
+```python
+import glob
+
+dfs = [] 
+
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+    year = csv[29:33] #the 30th to 33rd characters in each file match the year
+    # if you copied your data using wget, year should be set differently:
+    # year = csv[5:9] #the 5th to 9th characters in each file match the year 
+    data = pd.read_csv(csv) 
+    data['year'] = year 
+    dfs.append(data)
+
+df = pd.concat(dfs, ignore_index=True)
+
+df.head(3)
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+
+If we had the pickle file that contains all of our Chicago public library circulation data in a single DataFrame. We could use the Pandas `.read_pickle()` method load the data to use it again.
 
 
 ```python
 import pandas as pd
 
 df = pd.read_pickle('data/all_years.pkl')
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Tidy Data in Pandas 
+
+Let's take a peek at our data:
+
+```python
 df.head()
 ```
 |     | branch         | address                 | city    | zip code | january | february | march | april | may   | june  | july  | august | september | october | november | december | ytd    | year |
@@ -34,6 +92,8 @@ df.head()
 | 2   | Archer Heights | 5055 S. Archer Ave.     | Chicago | 60632.0  | 8104    | 6899     | 9329  | 9124  | 7472  | 8314  | 8116  | 9177   | 9033      | 9709    | 8809     | 7865     | 101951 | 2011 |
 | 3   | Austin         | 5615 W. Race Ave.       | Chicago | 60644.0  | 1755    | 1316     | 1942  | 2200  | 2133  | 2359  | 2080  | 2405   | 2417      | 2571    | 2233     | 2116     | 25527  | 2011 |
 | 4   | Austin-Irving  | 6100 W. Irving Park Rd. | Chicago | 60634.0  | 12593   | 11791    | 14807 | 14382 | 11754 | 14402 | 14605 | 15164  | 14306     | 15357   | 14069    | 12404    | 165634 | 2011 |
+
+
 
 ```python
 df.tail()
