@@ -62,9 +62,12 @@ import pandas as pd
 dfs = [] 
 
 for csv in sorted(glob.glob(file_location + 'data/*.csv')):
-    year = csv[29:33] #the 30th to 33rd characters in each file match the year
-    # if you copied your data using wget, year should be set differently:
-    # year = csv[5:9] #the 5th to 9th characters in each file match the year 
+    if file_location == "drive/MyDrive/lc-python/":
+      year = csv[29:33] # the 30th to 33rd characters match the year
+                        # for files we downloaded to Google Drive for Colab
+    else:
+      year = csv[5:9] # the 5th to 9th characters in each file match the year
+                      # for files downloaded using wget
     data = pd.read_csv(csv) 
     data['year'] = year 
     dfs.append(data)

@@ -142,10 +142,20 @@ Before we join the data from each CSV into a single DataFrame, we'll want to mak
 ```python
 for csv in sorted(glob.glob(file_location + 'data/*.csv')):
         year = csv[29:33] #the 30th to 33rd characters in each file match the year
-        # if you copied your data using wget, year should be set differently:
-        # year = csv[5:9] #the 5th to 9th characters in each file match the year
+                          # for files we downloaded to Google Drive for Colab
         print(f'filename: {csv} year: {year}')
 ```
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+# if you downloaded your data files using wget
+```python
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+        year = csv[5:9] # the 5th to 9th characters in each file match the year
+                        # for files downloaded using wget
+        print(f'filename: {csv} year: {year}')
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```output
 filename: drive/MyDrive/lc-python/data/2011_circ.csv year: 2011
@@ -170,8 +180,9 @@ To collect the data from each CSV we'll use a list "accumulator" (as we covered 
 dfs = [] # an empty list to hold all of our DataFrames
 counter = 1
 
-for csv in sorted(glob.glob('data/*.csv')):
-  year = csv[5:9] 
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+  year = csv[29:33] # the 30th to 33rd characters match the year
+                    # for files we downloaded to Google Drive for Colab
   data = pd.read_csv(csv) 
   data['year'] = year 
   print(f'{counter} Saving {len(data)} rows from {csv}')
@@ -180,6 +191,25 @@ for csv in sorted(glob.glob('data/*.csv')):
 
 print(f'Number of saved DataFrames: {len(dfs)}')
 ```
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+# if you downloaded your data files using wget
+```python
+dfs = [] # an empty list to hold all of our DataFrames
+counter = 1
+
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+  year = csv[5:9] # the 5th to 9th characters in each file match the year
+                  # for files downloaded using wget
+  data = pd.read_csv(csv) 
+  data['year'] = year 
+  print(f'{counter} Saving {len(data)} rows from {csv}')
+  dfs.append(data)
+  counter += 1
+
+print(f'Number of saved DataFrames: {len(dfs)}')
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```output
 1 Saving 80 rows from drive/MyDrive/lc-python/data/2011_circ.csv
@@ -252,7 +282,7 @@ Modify the following code to print out the lowest value in the `ytd` column from
 
 ```python
 import pandas as pd
-for csv in sorted(glob.glob('data/*.csv')):
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
     data = pd.read_csv(____)
     print(csv, data['____'].____())
     
@@ -264,7 +294,7 @@ for csv in sorted(glob.glob('data/*.csv')):
 
 ```python
 import pandas as pd
-for csv in sorted(glob.glob('data/*.csv')):
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
     data = pd.read_csv(csv)
     print(csv, data['ytd'].min())
     
@@ -289,7 +319,7 @@ import pandas as pd
 
 dfs = []
 
-for csv in sorted(glob.glob('outputs/data*.csv')):
+for csv in sorted(glob.glob(file_location + 'outputs/data*.csv')):
     data = pd.read_csv(csv)
     dfs.append(data)
     
