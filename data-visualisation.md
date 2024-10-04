@@ -61,7 +61,7 @@ Version `2.2.2`, has a plotting bug (as of this writing, Colab is using 2.2.2) s
 ```bash
 !pip install pandas==2.2.3
 ```
-after installing `pandas` you'll need to restart your Colab session for the new version to take effect. Colab should prompt you to do so but if it doesn't, go to Runtime -> Restart session (or Ctrl-M .).
+after installing `pandas` you'll need to restart your Colab session for the new version to take effect. Colab may prompt you to do so but if it doesn't, go to Runtime -> Restart session (or Ctrl-M .). Check your pandas version after you've restarted your session.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ``` python
@@ -116,6 +116,15 @@ albany.plot()
 ```
 
 ![](fig/albany-plot-1.png){alt="Line plot of zip code, ytd, year, and circulation numbers over time from the albany DataFrame"}
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+## What if the plot looks bonkers due to the pandas `2.2.2` bug?
+
+Try adding `.sort_index()` in front of `.plot()` for the plotting commands in this episode.
+``` python
+albany['circulation'].sort_index().plot()
+```
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 That's interesting, but by default `.plot()` will use a line plot for all numeric variables of the DataFrame. This isn’t exactly what we want, so let’s tell `.plot()` what variable to use by selecting the `circulation` column.
 
