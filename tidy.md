@@ -45,7 +45,7 @@ file_location = ""
 Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Then we'll need to put all of the Chicago public library circulation data in a single DataFrame.
+Once we can access the data files, we'll need to put all of the Chicago public library circulation data in a single DataFrame. If you've just completed Episode 11, you can skip this step and proceed to [Tidy Data in Pandas](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/tidy.html#tidy-data-in-pandas).
 
 ```python
 import glob
@@ -58,14 +58,12 @@ for csv in sorted(glob.glob(file_location + 'data/*.csv')):
                         # for files we downloaded to Google Drive for Colab
     else:
       year = csv[5:9] # the 5th to 9th characters in each file match the year
-                      # for files downloaded using wget or
+                      # for files downloaded using wget
     data = pd.read_csv(csv) 
     data['year'] = year 
     dfs.append(data)
 
 df = pd.concat(dfs, ignore_index=True)
-
-df.head(3)
 ```
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -87,7 +85,7 @@ df = pd.read_pickle('data/all_years.pkl')
 
 ## Tidy Data in Pandas 
 
-Let's take a peek at our data:
+Let's take a peek at our dataframe:
 
 ```python
 df.head()
