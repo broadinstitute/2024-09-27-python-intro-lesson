@@ -359,12 +359,16 @@ new_df.head()
 ```
 :::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::  spoiler
+
+## Saving into `data/` doesn't work in Colab
+
 Finally, let's save our full concatenated DataFrame to a pickle file that we can use later on in the lesson. We'll save it in the `data/` directory alongside our other data files.
 
 ```python
 df.to_pickle('data/all_years.pkl')
 ```
-
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
