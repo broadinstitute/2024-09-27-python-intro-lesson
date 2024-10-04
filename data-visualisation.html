@@ -391,7 +391,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Visualisation</h1>
-        <p>Last updated on 2024-10-03 |
+        <p>Last updated on 2024-10-04 |
 
         <a href="https://github.com/broadinstitute/2024-09-27-python-intro-lesson/edit/main/episodes/data-visualisation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -431,14 +431,15 @@ outliers in library circulation data.</li>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions if your Google Drive is not mounted </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions if your Google Drive is not mounted </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
-<p>You’ll need to load the library <code>pandas</code> and make your
+<p>If you did not run the commands from episode 7 in this Colab session,
+you will need to load the library <code>pandas</code> and make your
 google drive accessible:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -449,13 +450,17 @@ google drive accessible:</p>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">"drive/MyDrive/lc-python/"</span></span></code></pre>
 </div>
 <p>You’ll need to grant Google all the permissions it requests to make
-your google drive accessible to Colab.
-:::::::::::::::::::::::::::::::::::::::::: spoiler</p>
-<div class="section level3">
-<h3 id="what-if-the-files-have-not-been-copied-to-my-google-drive-yet">What if the files have not been copied to my Google Drive yet?<a class="anchor" aria-label="anchor" href="#what-if-the-files-have-not-been-copied-to-my-google-drive-yet"></a></h3>
-<p>We wanted you to know how to make files you have on your computer
-accessible for use in Colab and persist over time. To save time now, run
-<code>wget</code> to download files directly to the cloud:</p>
+your google drive accessible to Colab.</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> What if the files have not been copied to my Google Drive yet? </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>Uploading files to Google Drive allows the data persist over time
+when using Colab. To save time now, run <code>wget</code> to download
+files directly to the cloud:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -467,41 +472,49 @@ accessible for use in Colab and persist over time. To save time now, run
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">""</span></span></code></pre>
 </div>
+<p>Remember that next time you use Colab, you’ll need to get these files
+again unless you follow the <a href="https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup" class="external-link">Setup
+instructions</a> to copy the files to Google Drive.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</div>
+</div>
+</div>
 <p>For this module, we will use the tidy (long) version of our
 circulation data, where each variable forms a column, each observation
 forms a row, and each type of observation unit forms a row. If your
 workshop included the Tidy Data episode, you should be set and have an
 object called <code>df_long</code> in your Jupyter environment. If not,
 we’ll read that dataset in now, as it was provided for this lesson.</p>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> What version of pandas is Colab using? </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> What version of pandas is Colab using? </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>We can find out the version number of installed Python libraries
 with</p>
 <div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">!pip</span> list</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">print</span>(pd.__version__)</span></code></pre>
 </div>
-<p>The output will be extensive but is sorted alphabetically. Look for
-the version number for <code>pandas</code>. If it is <code>2.2.2</code>,
-you’ll need to:</p>
+<p>Version <code>2.2.2</code>, has a plotting bug (as of this writing,
+Colab is using 2.2.2) so you’d need to:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">!pip</span> install pandas==2.3.3</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">!pip</span> install pandas==2.2.3</span></code></pre>
 </div>
-<p>there’s a plotting bug in version <code>2.2.2</code>.</p>
+<p>after installing <code>pandas</code> you’ll need to restart your
+Colab session for the new version to take effect. Colab should prompt
+you to do so but if it doesn’t, go to Runtime -&gt; Restart session (or
+Ctrl-M .).</p>
 </div>
 </div>
 </div>
@@ -696,7 +709,7 @@ or notable changes in the data.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The significant drop in circulation in March 2020 is likely due to
 the COVID-19 pandemic, which caused widespread temporary closures of
@@ -833,7 +846,7 @@ over time.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -848,12 +861,12 @@ over time.</li>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Modify a plot display </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Modify a plot display </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <p>Add a line to the code below to plot the Uptown branch circulation
 including the following plot elements:</p>
@@ -872,7 +885,7 @@ including the following plot elements:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -922,7 +935,7 @@ branches with the highest circulation.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1024,8 +1037,8 @@ any links that you are not going to use.
   "url": "https://broadinstitute.github.io/2024-09-27-python-intro-lesson/data-visualisation.html",
   "identifier": "https://broadinstitute.github.io/2024-09-27-python-intro-lesson/data-visualisation.html",
   "dateCreated": "2024-09-01",
-  "dateModified": "2024-10-03",
-  "datePublished": "2024-10-03"
+  "dateModified": "2024-10-04",
+  "datePublished": "2024-10-04"
 }
 
   </script><script>
