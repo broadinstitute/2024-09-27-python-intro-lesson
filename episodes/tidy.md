@@ -67,6 +67,9 @@ df.head(3)
 
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
+## Skipping pickle file loading 
+
+We're continuing with the dataframe we've either generated from Episode 11 or from the setup instructions above.
 
 If we had the pickle file that contains all of our Chicago public library circulation data in a single DataFrame. We could use the Pandas `.read_pickle()` method load the data to use it again.
 
