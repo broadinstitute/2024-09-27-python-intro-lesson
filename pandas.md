@@ -22,6 +22,35 @@ exercises: 10
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+## Setup instructions if your Google Drive is not mounted
+If you did not run the commands from episode 7 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
+```python
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+file_location = "drive/MyDrive/lc-python/"
+```
+You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
+
+:::::::::::::::::::::::::::::::::::::::::: spoiler
+
+### What if the files have not been copied to my Google Drive yet?
+
+Uploading files to Google Drive allows the data persist over time when using Colab. To save time now, run `wget` to download files directly to the cloud:
+
+```bash
+!wget https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip
+!unzip data.zip
+```
+```python
+file_location = ""
+```
+Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
+::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Pinpoint specific rows and columns in a DataFrame
 
 If you don't already have all of the CSV files loaded into a DataFrame, let's do that now: 
@@ -32,8 +61,10 @@ import pandas as pd
 
 dfs = [] 
 
-for csv in sorted(glob.glob('data/*.csv')):
-    year = csv[5:9] 
+for csv in sorted(glob.glob(file_location + 'data/*.csv')):
+    year = csv[29:33] #the 30th to 33rd characters in each file match the year
+    # if you copied your data using wget, year should be set differently:
+    # year = csv[5:9] #the 5th to 9th characters in each file match the year 
     data = pd.read_csv(csv) 
     data['year'] = year 
     dfs.append(data)
