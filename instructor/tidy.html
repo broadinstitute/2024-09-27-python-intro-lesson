@@ -392,7 +392,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Tidy Data with Pandas</h1>
-        <p>Last updated on 2024-09-24 |
+        <p>Last updated on 2024-10-04 |
 
         <a href="https://github.com/broadinstitute/2024-09-27-python-intro-lesson/edit/main/episodes/tidy.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -436,17 +436,108 @@ files into a single DataFrame and reshaping it using melt()</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="tidy-data-in-pandas">Tidy Data in Pandas<a class="anchor" aria-label="anchor" href="#tidy-data-in-pandas"></a></h2>
-<hr class="half-width"><p>Let’s import the pickle file that contains all of our Chicago public
-library circulation data in a single DataFrame. We can use the Pandas
-<code>.read_pickle()</code> method to do so.</p>
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Setup instructions if your Google Drive is not mounted </h3>
+</button>
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div class="accordion-body">
+<p>If you did not run the commands from episode 7 in this Colab session,
+you will need to load the library <code>pandas</code> and make your
+google drive accessible:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>df <span class="op">=</span> pd.read_pickle(<span class="st">'data/all_years.pkl'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>df.head()</span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">"drive/MyDrive/lc-python/"</span></span></code></pre>
+</div>
+<p>You’ll need to grant Google all the permissions it requests to make
+your google drive accessible to Colab.</p>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> What if the files have not been copied to my Google Drive yet? </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>Uploading files to Google Drive allows the data persist over time
+when using Colab. To save time now, run <code>wget</code> to download
+files directly to the cloud:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">!wget</span> https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">!unzip</span> data.zip</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>file_location <span class="op">=</span> <span class="st">""</span></span></code></pre>
+</div>
+<p>Remember that next time you use Colab, you’ll need to get these files
+again unless you follow the <a href="https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup" class="external-link">Setup
+instructions</a> to copy the files to Google Drive.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="put-all-of-our-chicago-public-library-circulation-data-in-a-single-dataframe-">Put all of our Chicago public library circulation data in a single
+DataFrame.<a class="anchor" aria-label="anchor" href="#put-all-of-our-chicago-public-library-circulation-data-in-a-single-dataframe-"></a></h2>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>dfs <span class="op">=</span> [] </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="cf">for</span> csv <span class="kw">in</span> <span class="bu">sorted</span>(glob.glob(file_location <span class="op">+</span> <span class="st">'data/*.csv'</span>)):</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    year <span class="op">=</span> csv[<span class="dv">29</span>:<span class="dv">33</span>] <span class="co">#the 30th to 33rd characters in each file match the year</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>    <span class="co"># if you copied your data using wget, year should be set differently:</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>    <span class="co"># year = csv[5:9] #the 5th to 9th characters in each file match the year </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(csv) </span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>    data[<span class="st">'year'</span>] <span class="op">=</span> year </span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>    dfs.append(data)</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>df <span class="op">=</span> pd.concat(dfs, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Show details </h3>
+</button>
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
+<div class="accordion-body">
+<p>If we had the pickle file that contains all of our Chicago public
+library circulation data in a single DataFrame. We could use the Pandas
+<code>.read_pickle()</code> method load the data to use it again.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>df <span class="op">=</span> pd.read_pickle(<span class="st">'data/all_years.pkl'</span>)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="tidy-data-in-pandas">Tidy Data in Pandas<a class="anchor" aria-label="anchor" href="#tidy-data-in-pandas"></a></h2>
+<hr class="half-width"><p>Let’s take a peek at our data:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df.head()</span></code></pre>
 </div>
 <table style="width:100%;" class="table"><colgroup><col width="2%"><col width="8%"><col width="13%"><col width="4%"><col width="5%"><col width="4%"><col width="5%"><col width="3%"><col width="3%"><col width="3%"><col width="3%"><col width="3%"><col width="4%"><col width="6%"><col width="4%"><col width="5%"><col width="5%"><col width="4%"><col width="3%"></colgroup><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -562,10 +653,10 @@ library circulation data in a single DataFrame. We can use the Pandas
 <td>12404</td>
 <td>165634</td>
 <td>2011</td>
-</tr></tbody></table><div class="codewrapper sourceCode" id="cb2">
+</tr></tbody></table><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>df.tail()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>df.tail()</span></code></pre>
 </div>
 <table class="table"><colgroup><col width="2%"><col width="8%"><col width="13%"><col width="5%"><col width="5%"><col width="5%"><col width="5%"><col width="4%"><col width="4%"><col width="3%"><col width="3%"><col width="3%"><col width="4%"><col width="6%"><col width="5%"><col width="5%"><col width="5%"><col width="4%"><col width="3%"></colgroup><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -726,21 +817,21 @@ with the principles of tidy data.</p>
 <code>melt()</code>. This function reshapes the data from wide to long
 format, where each row will represent one month’s circulation data for a
 branch. Let’s look at the help for <code>melt</code> first.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">help</span>(pd.melt)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">help</span>(pd.melt)</span></code></pre>
 </div>
 <p>Now, let’s tidy our data. We’ll create a new dataframe called
 <code>df_long</code> and use <code>melt</code> to reshape.
 <code>melt</code> essentially melts down our columns into rows.</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>df_long <span class="op">=</span> df.melt(id_vars<span class="op">=</span>[<span class="st">'branch'</span>, <span class="st">'address'</span>, <span class="st">'city'</span>, <span class="st">'zip code'</span>, <span class="st">'ytd'</span>, <span class="st">'year'</span>],</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>                    value_vars<span class="op">=</span>[<span class="st">'january'</span>, <span class="st">'february'</span>, <span class="st">'march'</span>, <span class="st">'april'</span>, <span class="st">'may'</span>, <span class="st">'june'</span>, </span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>                                <span class="st">'july'</span>, <span class="st">'august'</span>, <span class="st">'september'</span>, <span class="st">'october'</span>, <span class="st">'november'</span>, <span class="st">'december'</span>],</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                    var_name<span class="op">=</span><span class="st">'month'</span>, value_name<span class="op">=</span><span class="st">'circulation'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>df_long <span class="op">=</span> df.melt(id_vars<span class="op">=</span>[<span class="st">'branch'</span>, <span class="st">'address'</span>, <span class="st">'city'</span>, <span class="st">'zip code'</span>, <span class="st">'ytd'</span>, <span class="st">'year'</span>],</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>                    value_vars<span class="op">=</span>[<span class="st">'january'</span>, <span class="st">'february'</span>, <span class="st">'march'</span>, <span class="st">'april'</span>, <span class="st">'may'</span>, <span class="st">'june'</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>                                <span class="st">'july'</span>, <span class="st">'august'</span>, <span class="st">'september'</span>, <span class="st">'october'</span>, <span class="st">'november'</span>, <span class="st">'december'</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>                    var_name<span class="op">=</span><span class="st">'month'</span>, value_name<span class="op">=</span><span class="st">'circulation'</span>)</span></code></pre>
 </div>
 <p>In the above code we use <code>id_vars</code> to list the columns we
 do not want to melt. We then identify the columns we do want to melt
@@ -749,10 +840,10 @@ into rows in the <code>value_vars</code> parameter.
 transformed into rows. <code>value_names</code> is the measured
 variable, <code>circulation</code> in our case. Let’s now look at the
 new structure of our data.</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df_long</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>df_long</span></code></pre>
 </div>
 <table class="table"><colgroup><col width="6%"><col width="15%"><col width="24%"><col width="8%"><col width="9%"><col width="7%"><col width="5%"><col width="9%"><col width="12%"></colgroup><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -863,10 +954,10 @@ new structure of our data.</p>
 <td>december</td>
 <td>788</td>
 </tr></tbody></table><p>Ok, let’s look at the unique branches in our long DataFrame:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df_long[<span class="st">'branch'</span>].unique()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>df_long[<span class="st">'branch'</span>].unique()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -900,10 +991,10 @@ Let’s look at which branches circulated over 10,000 items in any given
 month. We can filter the <code>df_long</code> DataFrame to only show
 rows that have a number greater than 10,000 in the
 <code>circulation</code> column.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>df_long[df_long[<span class="st">'circulation'</span>] <span class="op">&gt;</span> <span class="dv">10000</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>df_long[df_long[<span class="st">'circulation'</span>] <span class="op">&gt;</span> <span class="dv">10000</span>]</span></code></pre>
 </div>
 <table style="width:100%;" class="table"><colgroup><col width="5%"><col width="27%"><col width="20%"><col width="7%"><col width="8%"><col width="6%"><col width="4%"><col width="8%"><col width="10%"></colgroup><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -1017,10 +1108,10 @@ rows that have a number greater than 10,000 in the
 1434 rows × 8 columns
 </p>
 <p>We can look at specific columns:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>df_long[[<span class="st">'branch'</span>, <span class="st">'circulation'</span>]]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>df_long[[<span class="st">'branch'</span>, <span class="st">'circulation'</span>]]</span></code></pre>
 </div>
 <table class="table"><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -1063,10 +1154,10 @@ rows that have a number greater than 10,000 in the
 </p>
 <p>We can sort our table using <code>.sort_values()</code> to see the
 branches with the highest circulation per month:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>df_long.sort_values(<span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>df_long.sort_values(<span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
 </div>
 <table class="table"><colgroup><col width="5%"><col width="29%"><col width="18%"><col width="7%"><col width="8%"><col width="6%"><col width="5%"><col width="6%"><col width="11%"></colgroup><thead><tr class="header"><th></th>
 <th>branch</th>
@@ -1181,10 +1272,10 @@ branches with the highest circulation per month:</p>
 </p>
 <p>What if we want to tally up the total circulation for each branch
 over all years and also see the mean circulation?</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].agg(total_circulation<span class="op">=</span><span class="st">'sum'</span>, mean_circulation<span class="op">=</span><span class="st">'mean'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>df_long.groupby(<span class="st">'branch'</span>)[<span class="st">'circulation'</span>].agg(total_circulation<span class="op">=</span><span class="st">'sum'</span>, mean_circulation<span class="op">=</span><span class="st">'mean'</span>)</span></code></pre>
 </div>
 <table class="table"><thead><tr class="header"><th></th>
 <th>total_circulation</th>
@@ -1255,10 +1346,10 @@ branch.</li>
 </ul></li>
 </ol><p>If we want to group by more than one variable, we can list those
 column names in the <code>.groupby()</code> function.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>df_long.groupby([<span class="st">'branch'</span>, <span class="st">'month'</span>])[<span class="st">'circulation'</span>].agg([<span class="st">'sum'</span>, <span class="st">'mean'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>df_long.groupby([<span class="st">'branch'</span>, <span class="st">'month'</span>])[<span class="st">'circulation'</span>].agg([<span class="st">'sum'</span>, <span class="st">'mean'</span>])</span></code></pre>
 </div>
 <table class="table"><thead><tr class="header"><th></th>
 <th></th>
@@ -1323,19 +1414,19 @@ column to a <a href="https://docs.python.org/3/library/datetime.html" class="ext
 objec using the Pandas <code>to_datetime</code> function. Third, we
 assign the date column as our index for the data. These steps will set
 up our data for plotting.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>] <span class="op">=</span> df_long[<span class="st">'year'</span>] <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> df_long[<span class="st">'month'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>] <span class="op">=</span> df_long[<span class="st">'year'</span>] <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> df_long[<span class="st">'month'</span>]</span></code></pre>
 </div>
 <p>This will create a new column in our data frame by adding our year
 and month together separated by a <code>-</code>. This setup is not
 sufficient for us to use <code>.to_datetime()</code> to convert the
 column to something Python and Pandas knows is a date.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(df_long[<span class="st">'date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%B'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(df_long[<span class="st">'date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%B'</span>)</span></code></pre>
 </div>
 <p><code>pd.to_datetime()</code> will do the conversion, but we need to
 tell it how we have our date formatted. In this case we have year and
@@ -1343,10 +1434,10 @@ month name spelled out. To find more format codes, see <a href="https://docs.pyt
 <p>If we take a look at the date column, we’ll see that datetime
 automatically adds a day (always <code>01</code>) in the absence of any
 specific day input.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df_long[<span class="st">'date'</span>]</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1364,10 +1455,10 @@ specific day input.</p>
 11555   2022-12-01
 Name: date, Length: 11556, dtype: datetime64[ns]</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>df_long.info()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>df_long.info()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1397,18 +1488,18 @@ will make it easier for us to plot the DataFrame over time. The first
 parameter of <code>.set_index()</code> is the column name and the
 <code>inplace=True</code> parameter allows us to modify the DataFrame
 without assigning it to a new variable.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>df_long.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>df_long.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <p>If we look at the data again, we will see our index will be set to
 date.</p>
 <p>Let’s save <code>df_long</code> to use in the next episode.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df.to_pickle(<span class="st">'data/df_long.pkl'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>df.to_pickle(<span class="st">'data/df_long.pkl'</span>)</span></code></pre>
 </div>
 <div id="tidy-data-principles" class="callout challenge">
 <div class="callout-square">
@@ -1449,7 +1540,7 @@ match the content unit however you like.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Year</th>
 <th>Month</th>
@@ -1491,38 +1582,38 @@ match the content unit however you like.</p>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Subsetting df_long </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Subsetting df_long </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <p>Using df_long, create a new DataFrame, `low_circ’, that only includes
 branches with circulation numbers lower than 500 per month. When you
 create a subset DataFrame, show the following columns: branch,
 circulation, month, and year. Next, eliminate the rows when the
 circulation is equal to 0.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>low_circ <span class="op">=</span> df_long[_________[_________] __ <span class="dv">500</span>]</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>low_circ <span class="op">=</span> _________[_________[_________] <span class="op">!=</span> __]</span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>low_circ.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>low_circ <span class="op">=</span> df_long[_________[_________] __ <span class="dv">500</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>low_circ <span class="op">=</span> _________[_________[_________] <span class="op">!=</span> __]</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>low_circ.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>low_circ <span class="op">=</span> df_long[df_long[<span class="st">'circulation'</span>] <span class="op">&lt;</span> <span class="dv">500</span>]</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>low_circ <span class="op">=</span> low_circ[low_circ[<span class="st">'circulation'</span>] <span class="op">!=</span> <span class="dv">0</span>]</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>low_circ.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>low_circ <span class="op">=</span> df_long[df_long[<span class="st">'circulation'</span>] <span class="op">&lt;</span> <span class="dv">500</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>low_circ <span class="op">=</span> low_circ[low_circ[<span class="st">'circulation'</span>] <span class="op">!=</span> <span class="dv">0</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>low_circ.sort_values(by<span class="op">=</span><span class="st">'circulation'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1532,12 +1623,12 @@ circulation is equal to 0.</p>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Group and aggregate for circulation by year </h3>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Bonus Challenge: Group and aggregate for circulation by year </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
 <div class="accordion-body">
 <p>How would you create a subset of <code>df_long</code> that sums up
 the circulation by year across all branches? In other words you want a
@@ -1549,12 +1640,12 @@ for all branches in each year.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>df_long.groupby([<span class="st">'year'</span>])[<span class="st">'circulation'</span>].agg([<span class="st">'sum'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>df_long.groupby([<span class="st">'year'</span>])[<span class="st">'circulation'</span>].agg([<span class="st">'sum'</span>])</span></code></pre>
 </div>
 <table class="table"><thead><tr class="header"><th>year</th>
 <th>sum</th>
@@ -1666,7 +1757,7 @@ any links that you are not going to use.
   "url": "https://broadinstitute.github.io/2024-09-27-python-intro-lesson/instructor/tidy.html",
   "identifier": "https://broadinstitute.github.io/2024-09-27-python-intro-lesson/instructor/tidy.html",
   "dateCreated": "2024-09-01",
-  "dateModified": "2024-09-24",
+  "dateModified": "2024-10-04",
   "datePublished": "2024-10-04"
 }
 
