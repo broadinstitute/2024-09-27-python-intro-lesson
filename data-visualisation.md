@@ -21,8 +21,7 @@ exercises: 10
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
 ## Setup instructions if your Google Drive is not mounted
-
-You'll need to load the library `pandas` and make your google drive accessible:
+If you did not run the commands from episode 7 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
 ```python
 import pandas as pd
 from google.colab import drive
@@ -30,11 +29,12 @@ drive.mount('/content/drive')
 file_location = "drive/MyDrive/lc-python/"
 ```
 You'll need to grant Google all the permissions it requests to make your google drive accessible to Colab.
+
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
 ### What if the files have not been copied to my Google Drive yet?
 
-We wanted you to know how to make files you have on your computer accessible for use in Colab and persist over time. To save time now, run `wget` to download files directly to the cloud:
+Uploading files to Google Drive allows the data persist over time when using Colab. To save time now, run `wget` to download files directly to the cloud:
 
 ```bash
 !wget https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip
@@ -43,6 +43,7 @@ We wanted you to know how to make files you have on your computer accessible for
 ```python
 file_location = ""
 ```
+Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -52,14 +53,15 @@ For this module, we will use the tidy (long) version of our circulation data, wh
 ## What version of `pandas` is Colab using?
 
 We can find out the version number of installed Python libraries with
-```bash
-!pip list
+```python
+import pandas as pd
+print(pd.__version__)
 ```
-The output will be extensive but is sorted alphabetically. Look for the version number for `pandas`. If it is `2.2.2`, you'll need to:
+Version `2.2.2`, has a plotting bug (as of this writing, Colab is using 2.2.2) so you'd need to:
 ```bash
-!pip install pandas==2.3.3
+!pip install pandas==2.2.3
 ```
-there's a plotting bug in version `2.2.2`.
+after installing `pandas` you'll need to restart your Colab session for the new version to take effect. Colab should prompt you to do so but if it doesn't, go to Runtime -> Restart session (or Ctrl-M .).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ``` python

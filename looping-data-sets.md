@@ -22,8 +22,7 @@ exercises: 10
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
 ## Setup instructions if your Google Drive is not mounted
-
-You'll need to load the library `pandas` and make your google drive accessible:
+If you did not run the commands from episode 5 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
 ```python
 import pandas as pd
 from google.colab import drive
@@ -36,7 +35,7 @@ You'll need to grant Google all the permissions it requests to make your google 
 
 ### What if the files have not been copied to my Google Drive yet?
 
-We wanted you to know how to make files you have on your computer accessible for use in Colab and persist over time. To save time now, run `wget` to download files directly to the cloud:
+Uploading files to Google Drive allows the data persist over time when using Colab. To save time now, run `wget` to download files directly to the cloud:
 
 ```bash
 !wget https://github.com/jlchang/cb-python-intro-lesson-template/raw/refs/heads/main/episodes/files/data.zip
@@ -45,6 +44,7 @@ We wanted you to know how to make files you have on your computer accessible for
 ```python
 file_location = ""
 ```
+Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
