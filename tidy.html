@@ -482,8 +482,10 @@ instructions</a> to copy the files to Google Drive.</p>
 </div>
 </div>
 </div>
-<p>Then we’ll need to put all of the Chicago public library circulation
-data in a single DataFrame.</p>
+<p>Once we can access the data files, we’ll need to put all of the
+Chicago public library circulation data in a single DataFrame. If you’ve
+just completed Episode 11, you can skip this step and proceed to <a href="https://broadinstitute.github.io/2024-09-27-python-intro-lesson/tidy.html#tidy-data-in-pandas" class="external-link">Tidy
+Data in Pandas</a>.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -497,14 +499,12 @@ data in a single DataFrame.</p>
 <span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>                        <span class="co"># for files we downloaded to Google Drive for Colab</span></span>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>      year <span class="op">=</span> csv[<span class="dv">5</span>:<span class="dv">9</span>] <span class="co"># the 5th to 9th characters in each file match the year</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>                      <span class="co"># for files downloaded using wget or</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>                      <span class="co"># for files downloaded using wget</span></span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(csv) </span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    data[<span class="st">'year'</span>] <span class="op">=</span> year </span>
 <span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    dfs.append(data)</span>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>df <span class="op">=</span> pd.concat(dfs, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code></pre>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>df <span class="op">=</span> pd.concat(dfs, ignore_index<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -534,7 +534,7 @@ library circulation data in a single DataFrame. We could use the Pandas
 </div>
 </div>
 <section><h2 class="section-heading" id="tidy-data-in-pandas">Tidy Data in Pandas<a class="anchor" aria-label="anchor" href="#tidy-data-in-pandas"></a></h2>
-<hr class="half-width"><p>Let’s take a peek at our data:</p>
+<hr class="half-width"><p>Let’s take a peek at our dataframe:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
