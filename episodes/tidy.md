@@ -20,7 +20,7 @@ exercises: 10
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 
 ## Setup instructions if your Google Drive is not mounted
-If you did not run the commands from episode 7 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
+If you did not run the commands from episode 11 in this Colab session, you will need to load the library `pandas` and make your google drive accessible:
 ```python
 import pandas as pd
 from google.colab import drive
@@ -45,16 +45,20 @@ file_location = ""
 Remember that next time you use Colab, you'll need to get these files again unless you follow the [Setup instructions](https://broadinstitute.github.io/2024-09-27-python-intro-lesson/#setup) to copy the files to Google Drive.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Put all of our Chicago public library circulation data in a single DataFrame.
+Then we'll need to put all of the Chicago public library circulation data in a single DataFrame.
+
 ```python
 import glob
 
 dfs = [] 
 
 for csv in sorted(glob.glob(file_location + 'data/*.csv')):
-    year = csv[29:33] #the 30th to 33rd characters in each file match the year
-    # if you copied your data using wget, year should be set differently:
-    # year = csv[5:9] #the 5th to 9th characters in each file match the year 
+    if file_location == "drive/MyDrive/lc-python/":
+      year = csv[29:33] # the 30th to 33rd characters match the year
+                        # for files we downloaded to Google Drive for Colab
+    else:
+      year = csv[5:9] # the 5th to 9th characters in each file match the year
+                      # for files downloaded using wget or
     data = pd.read_csv(csv) 
     data['year'] = year 
     dfs.append(data)
