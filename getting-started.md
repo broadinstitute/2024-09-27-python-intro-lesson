@@ -56,7 +56,7 @@ If you see loaded data beneath the code cell, feel free to browse today's lesson
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Why Python?
+## Why NOT Python?
 
 Python is a popular programming language for tasks such as data collection, cleaning, and analysis. Python can help you to create reproducible workflows to accomplish repetitive tasks more efficiently. 
 
